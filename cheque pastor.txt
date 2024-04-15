@@ -1,0 +1,78 @@
+#include <stdio.h>
+
+/*
+Ao professor: Professor me senti incapaz de realizar esta atividade, mas não quero ser desonesto com o senhor e nem com os meus colegas, por isso declaro ter usado bastante de IA's para resolver este exercício.
+
+Espero que o Sr. compreenda,
+
+Att. Gustavo
+*/
+
+
+
+
+
+
+
+
+// Função para imprimir o tabuleiro
+void imprimir_tabuleiro(char tabuleiro[8][8]) {
+    printf("\n   A B C D E F G H\n");
+    for (int i = 0; i < 8; i++) {
+        printf(" %d ", 8 - i);
+        for (int j = 0; j < 8; j++) {
+            if (tabuleiro[i][j] != 'X') {
+                if (tabuleiro[i][j] >= 'a' && tabuleiro[i][j] <= 'z') {
+                    printf("P%c ", tabuleiro[i][j]);
+                } else {
+                    printf("B%c ", tabuleiro[i][j]);
+                }
+            } else {
+                printf("X ");
+            }
+        }
+        printf("%d\n", 8 - i);
+    }
+    printf("   A B C D E F G H\n\n");
+}
+
+int main() {
+    // Inicializando o tabuleiro
+    char tabuleiro[8][8] = {
+        {'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8'},
+        {'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8'},
+        {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
+        {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
+        {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
+        {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
+        {'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8'},
+        {'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8'}
+    };
+
+    // Jogada #1
+    tabuleiro[6][4] = 'X';
+    tabuleiro[4][4] = 'P5';
+    printf("Jogada #1:\n");
+    imprimir_tabuleiro(tabuleiro);
+
+    // Jogada #2
+    tabuleiro[7][5] = 'X';
+    tabuleiro[5][5] = 'B3';
+    printf("Jogada #2:\n");
+    imprimir_tabuleiro(tabuleiro);
+
+    // Jogada #3
+    tabuleiro[7][3] = 'X';
+    tabuleiro[5][3] = 'B4';
+    printf("Jogada #3:\n");
+    imprimir_tabuleiro(tabuleiro);
+
+    // Jogada #4 - Xeque Mate
+    tabuleiro[5][3] = 'X';
+    tabuleiro[6][5] = 'X';
+    tabuleiro[7][4] = 'B4';
+    printf("Jogada #4 - Xeque Mate:\n");
+    imprimir_tabuleiro(tabuleiro);
+
+    return 0;
+}
